@@ -38,7 +38,10 @@ function checkAnswer(){
    let isCorrect = userAnswer === calculatedAnswer[0];
    if (isCorrect){
        alert("You got it right!")
-   } else alert(`aww... you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}`);
+       incrementScore();
+   } else { alert(`aww... you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}`);
+   incrementWrongAnswer();
+}
    runGame(calculatedAnswer[1]);
 }
 function calculateCorrectAnswer(){
@@ -46,17 +49,22 @@ function calculateCorrectAnswer(){
     let operator = document.getElementById("operator").innerText;
     let operand2 = parseInt(document.getElementById("operand2").innerText);
     if (operator === "+"){
-        return [operand1 + operand2, "addition"]
+        return [operand1 + operand2, "addition"];
     } else {
         alert(`Unimplemented Operator ${operator}`)
         throw `Unimplemented Operator ${operator} Aborting!` 
 }
 }
+/**
+ * 
+ */
 function incrementScore(){
-
+  let oldScore = parseInt(document.getElementById("score").innerText);
+  document.getElementById("score").innerText = ++oldScore;
 }
 function incrementWrongAnswer(){
-
+    let oldScore = parseInt(document.getElementById("incorrect").innerText);
+    document.getElementById("incorrect").innerText = ++oldScore;
 }
 function displayAdditionQuestion(operand1,operand2){
     document.getElementById("operand1").textContent = operand1;
