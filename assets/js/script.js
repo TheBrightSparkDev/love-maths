@@ -30,10 +30,18 @@ function runGame(gameType){
     }
 }
 function checkAnswer(){
-
+   
 }
 function calculateCorrectAnswer(){
-
+    let operand1 = parseInt(getElementById("operand1").innerHtml);
+    let operator = getElementById("operator").innerHtml;
+    let operand2 = parseInt(getElementById("operand2").innerHtml);
+    if (operator === "+"){
+        return [operand1 + operand2, "addition"]
+    } else {
+        alert(`Unimplemented Operator ${operator}`)
+        throw `Unimplemented Operator ${operator} Aborting!` 
+}
 }
 function incrementScore(){
 
